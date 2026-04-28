@@ -30,12 +30,12 @@ def browser(playwright_instance: Playwright) -> Browser:
 def context(browser: Browser) -> BrowserContext:
     context = browser.new_context()
     yield context
-    browser.close()
+    context.close()
 
 @pytest.fixture(scope="function")
 def page(context: BrowserContext) -> Page:
     page = context.new_page()
     page.set_default_timeout(settings.default_timeout_ms)
     yield page
-
+    page.close()
 

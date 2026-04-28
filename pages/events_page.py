@@ -29,6 +29,5 @@ class EventsPage(BasePage):
         cards = self.page.locator("div").filter(
             has=self.page.get_by_role("button", name="Join")
         )
-
         first_card = cards.first
         return EventCard(first_card)

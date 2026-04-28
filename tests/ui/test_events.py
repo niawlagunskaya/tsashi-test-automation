@@ -1,9 +1,12 @@
+import pytest
+
 from pages.login_page import LoginPage
 from pages.events_page import EventsPage
 from config.settings import settings
 
-
-def test_user_can_join_first_event_card(page) -> None:
+@pytest.mark.smoke
+@pytest.mark.ui
+def test_user_can_join_card_and_see_updated_state(page) -> None:
     login_page = LoginPage(page)
     events_page = EventsPage(page)
 
