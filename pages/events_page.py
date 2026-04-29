@@ -26,8 +26,6 @@ class EventsPage(BasePage):
         return EventCard(card)
 
     def get_first_card(self):
-        cards = self.page.locator("div").filter(
-            has=self.page.get_by_role("button", name="Join")
-        )
-        first_card = cards.first
+        first_card = self.page.get_by_role("article").first
+        expect(first_card).to_be_visible()
         return EventCard(first_card)

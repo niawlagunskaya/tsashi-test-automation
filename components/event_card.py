@@ -6,8 +6,7 @@ class EventCard:
         self.card = card
         self.join_button = card.get_by_role("button", name="Join")
         self.open_button = card.get_by_role("button", name="Open")
-        self.leave_queue_button = card.get_by_role("button", name="Leave queue")
-
+        self.leave_queue_button = card.get_by_role("button", name="Leave queue").first
     def is_visible(self) -> bool:
         expect(self.card).to_be_visible()
         return self.card.is_visible()
@@ -21,6 +20,10 @@ class EventCard:
         expect(self.join_button).to_be_enabled()
         self.join_button.click()
 
-    def has_leave_queue_button(self) -> bool:
+    def is_leave_queue_visible(self) -> bool:
         expect(self.leave_queue_button).to_be_visible()
-        return self.leave_queue_button.is_visible()
+        return True
+
+    def is_join_visible(self) -> bool:
+        expect(self.join_button).to_be_visible()
+        return self.join_button.is_visible()

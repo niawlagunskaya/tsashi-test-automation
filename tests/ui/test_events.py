@@ -25,6 +25,9 @@ def test_user_can_join_card_and_see_updated_state(page) -> None:
 
     # basic check
     assert card.is_visible()
+    assert card.is_join_visible() is True
 
     # action
     card.click_join()
+
+    assert card.is_leave_queue_visible() is True
